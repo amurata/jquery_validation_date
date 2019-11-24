@@ -40,10 +40,10 @@
     }
 
     // 日付の整合性チェック関数
-    function isValidDate(y,m,d) {
-      dt = new Date(y,m-1,d);
+    function isValidDate(y, m, d) {
+      dt = new Date(y, m-1, d);
       // 日付として正しければtrueが返る
-      return (dt.getFullYear()==y && dt.getMonth()==m-1 && dt.getDate()==d);
+      return (dt.getFullYear() == y && dt.getMonth() == m-1 && dt.getDate() == d);
     }
   </script>
 </body>
