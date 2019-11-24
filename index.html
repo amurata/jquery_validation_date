@@ -25,23 +25,25 @@
 
   <!-- こっから当該のスクリプト -->
   <script>
-    // バリデーションエンジン走って〜
+    // バリデーションエンジン走
     $(document).ready(function(){
         $("#form1").validationEngine();
     });
 
     // 日付バリデーション関数
     function checkDate(field, rules, i, options){
-      const inputted_dates = field.val().match(/(\d{4})\/(\d{2})\/(\d{2})/); // 日付のパース
-      if(!inputted_dates || !ValidDate(inputted_dates[1], inputted_dates[2], inputted_dates[3])) {
+      const inputted_dates = field.val().match(/(\d{4})\/(\d{2})\/(\d{2})/); // 日付のパース(yyyy/mm/dd 形式のみ対応)
+      // const inputted_dates = field.val().match(/(\d{4})[/\-]{1}(\d{2})[/\-]{1}(\d{2})/); // 日付のパース(yyyy/mm/dd + yyyy-mm-dd 形式対応)
+      if(!inputted_dates || !isValidDate(inputted_dates[1], inputted_dates[2], inputted_dates[3])) {
         return `日付が不正です。`; // チェック結果をreturn
       }
     }
 
     // 日付の整合性チェック関数
-    function ValidDate(y,m,d) {
-      dt=new Date(y,m-1,d);
-      return(dt.getFullYear()==y && dt.getMonth()==m-1 && dt.getDate()==d);
+    function isValidDate(y,m,d) {
+      dt = new Date(y,m-1,d);
+      // 日付として正しければtrueが返る
+      return (dt.getFullYear()==y && dt.getMonth()==m-1 && dt.getDate()==d);
     }
   </script>
 </body>
